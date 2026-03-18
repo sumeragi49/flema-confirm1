@@ -1,3 +1,43 @@
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    justify-items: space-between;
+    float: right;
+}
+
+.header-nav_link {
+    color: #000;
+    text-decoration: none;
+    background: #fff;
+    border-radius: 3px;
+}
+
+.header-nav_link a {
+    color: #000;
+    text-decoration: none;
+    border: none;
+    background: #fff;
+    border-radius: 3px;
+}
+
+.header-nav_button {
+    border: none;
+    margin-left: 50px;
+    margin-right: 50px;
+    text-decoration: none;
+    background: transparent;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
 .item_content {
     margin: 0 auto;
     padding: 20px 15px;
@@ -5,5 +45,80 @@
 }
 
 .item_content-search {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
     border-bottom: 1px solid #000;
+}
+
+.item_content-search a {
+    background: #ffffff;
+    color: grey;
+    margin-left: 40px;
+    margin-right: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+}
+
+.active {
+    color: rgba(255, 0, 0, 0.7) !important;
+}
+
+.item_content-search a:hover{
+    color: #ff0000;
+}
+
+.item-list {
+    margin-top: 20px;
+}
+
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 40px;
+    gap: 15px;
+}
+
+.image-item {
+    position: relative;
+    width: calc((100%-15px*3)/4);
+}
+
+.image-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.image-item a {
+    text-decoration: none;
+    color: #000;
+}
+
+.sold-label {
+    position: absolute;
+    width:230px;
+    height: 230px;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(255, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    z-index: 10;
+    clip-path: polygon(100% 0, 40% 0, 100% 50%);
+}
+
+.sold-text {
+    position:absolute;
+    top:15px;
+    right: 5px;
+    transform: rotate(45deg);
+    font-size: 36px;
+    text-transform: uppercase;
 }

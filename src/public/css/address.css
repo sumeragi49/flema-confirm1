@@ -1,3 +1,40 @@
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+}
+
+.header-nav_link {
+    color: #000;
+    text-decoration: none;
+    background: #fff;
+    border-radius: 3px;
+}
+
+.header-nav_button a {
+    color: #000;
+    text-decoration: none;
+    background: #fff;
+    border-radius: 3px;
+}
+
+.header-nav_button {
+    border: none;
+    margin-left: 50px;
+    margin-right: 50px;
+    text-decoration: none;
+    background: transparent;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
 .profile_form-content {
     margin: 0 auto;
     padding: 20px 15px;
@@ -6,6 +43,10 @@
 
 .profile_form-heading {
     margin-bottom: 20px;
+    text-align: center;
+}
+
+.profile_form-heading h1{
     text-align: center;
 }
 

@@ -17,4 +17,19 @@ class Order extends Model
         'address',
         'building'
     ];
+
+    public function items()
+    {
+        return $this->belongsTo(Item::class);
+    }
+
+    public function item()
+    {
+        return $this->belongsToMany(Item::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
