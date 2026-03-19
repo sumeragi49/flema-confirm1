@@ -16,31 +16,7 @@
                 <a class="header_logo" href="/">
                     coachtech
                 </a>
-                <nav>
-                    <ul class="header-nav">
-                        @if (Auth::check())
-                        <li class="header-nav_item">
-                            <form action="">
-                                <input class="search_form" type="text">
-                            </form>
-                        </li>
-                        <li class="header-nav_item">
-                            <form class="form" action="/logout" method="post">
-                                @csrf
-                                <button class="header-nav_button">ログアウト</button>
-                            </form>
-                        </li>
-                        <li class="header-nav_item">
-                            <form action="">
-                                <button class="header-nav_button">マイページ</button>
-                            </form>
-                        </li>
-                        <li class="header-nav_item">
-                            <a class="header-nav_link" href="">出品</a>
-                        </li>
-                        @endif
-                    </ul>
-                </nav>
+                @yield('nav')
             </div>
         </div>
     </header>

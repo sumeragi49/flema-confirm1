@@ -19,7 +19,7 @@ class CreateNewUser implements CreatesNewUsers
      *
      * @param  array<string, string>  $input
      */
-    public function create(RegisterRequest $request)
+    public function create(Request $request)
     {
         return User::create([
             'name' => $input['name'],

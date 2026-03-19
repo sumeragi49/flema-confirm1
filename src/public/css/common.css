@@ -1,12 +1,13 @@
 .header {
     background: #000;
-    height: 150px;
+    
 }
 
 .header_inner {
     display:flex;
     margin: 0 auto;
-    padding: 20px 15px;
+    padding:0 15px;
+    align-items: center;
     max-width: 1230px;
 }
 
@@ -23,32 +24,4 @@
     font-weight: bold;
     justify-content: flex-start;
     font-size: 24px;
-}
-
-nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    gap: 10px;
-    width: 18%;
-}
-
-.header-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    float:right;
-}
-
-.header-nav_link {
-    color: #fff;
-    text-decoration: none;
-}
-
-.header-nav_button {
-    border: none;
-    background: transparent;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
 }

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +16,20 @@ use App\Http\Controllers\ItemController;
 |
 */
 
-
+Route::get('/search', [ItemController::class,'search'])->name('items.search');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', [ItemController::class, 'index']);
+    Route::get('/dashboard', [ItemController::class, 'index'])->name('item.index');
+
+    Route::get('/profile', [ProfileController::class, 'index']);
+
+    Route::post('/profile/store', [ProfileController::class, 'store']);
 });
 
 Route::middleware('guest')->group(function () {
-    Route::get('/', [ItemController::class, 'index']);
+    Route::get('/', [ItemController::class, 'index'])->name('items.index');
+
+    Route::get('/register',[AuthController::class, 'register']);
+
+    Route::post('/register',[AuthController::class, 'registerStore']);
 });

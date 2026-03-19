@@ -19,4 +19,14 @@ class Item extends Model
         'content',
         'price'
     ];
+
+    public function order()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function likedUsers()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }
