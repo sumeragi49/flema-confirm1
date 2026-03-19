@@ -8,9 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Condition extends Model
 {
     use HasFactory;
-
-    public function item()
-    {
-        return $this->hasMany(Item::class);
-    }
 }

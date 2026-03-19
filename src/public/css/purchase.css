@@ -1,89 +1,26 @@
-nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.header-nav {
-    display: flex;
-    align-items: center;
-    justify-items: space-between;
-    float: right;
-}
-
-.header-nav_link {
-    color: #000;
-    text-decoration: none;
-    background: #fff;
-    border-radius: 3px;
-}
-
-.header-nav_link a {
-    color: #000;
-    text-decoration: none;
-    border: none;
-    background: #fff;
-    border-radius: 3px;
-}
-
-.header-nav_button {
-    border: none;
-    margin-left: 50px;
-    margin-right: 50px;
-    text-decoration: none;
-    background: transparent;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-}
-
 .container {
     padding: 20px;
 }
 
 .item_container {
     display: flex;
+    align-items: center;
+    border-bottom: 1px solid #000;
     padding: 15px;
     gap: 20px;
 }
 
 .container_left {
-    width: 60%;
+    width: 615px;
     height: auto;
 }
 
 .container_left-item {
-    padding-bottom: 30px;
     border-bottom: 1px solid #000;
-}
-
-.container_left-item-bottom {
-    padding-bottom: 30px;
-    border-bottom: 1px solid #000;
-}
-
-.container_left-item-top {
-    display:flex;
-    border-bottom: 1px solid #000;
-    padding-bottom: 30px;
-}
-
-.container_left-item-top img {
-    width: 150px;
-    height: 150px;
-    margin-right: 30px;
-}
-
-.container_left-item_comment {
-    flex: 1;
-}
-
-.container_left-item_comment span {
-    font-size: 24px;
 }
 
 .container_left-item_title {
+    display: flex;
     padding: 20px;
     height: auto;
 }
@@ -92,9 +29,8 @@ nav {
     float: right;
 }
 
-.container_left-item_content{
+.container_left-item_content {
     display: flex;
-    align-items: center;
     height: auto;
     justify-content: center;
 }
@@ -103,48 +39,21 @@ nav {
     flex: 1;
 }
 
-.container_right-item_content {
+.container_right-item {
     border: 2px solid #000;
+    height: 30vh;
     display: flex;
     flex-direction: column;
     overflow: hidden;
 }
 
-.top-box,
-.bottom-box {
+.top-box, .bottom-box {
+    flex: 1;
     padding: 20px;
     overflow-y: auto;
 }
 
 .top-box {
-    padding: 20px;
-    overflow-y: auto;
     border-bottom: 2px solid #000;
-}
-
-.under-box {
-    padding: 20px;
-    overflow-y: auto;
-}
-
-.form_button {
-    margin-top: 20px;
-}
-
-.form_button-submit {
-    padding: 10px;
-    width: 100%;
-    height: 40px;
-    border: none;
-    border-radius: 3px;
-    color: #fff;
-    background: #ff0000;
-    cursor: pointer;
-}
-
-.form_error {
-    height: 20px;
-    color: #ff0000;
-    text-align: left;
 }
 

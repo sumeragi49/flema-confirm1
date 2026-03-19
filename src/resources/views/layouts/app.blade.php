@@ -13,18 +13,34 @@
     <header class="header">
         <div class="header_inner">
             <div class="header-utilities">
-                @auth
-                <a class="header_logo" href="/dashboard">
-                    coachtech
-                </a>
-                @endauth
-
-                @guest
                 <a class="header_logo" href="/">
                     coachtech
                 </a>
-                @endauth
-                @yield('nav')
+                <nav>
+                    <ul class="header-nav">
+                        @if (Auth::check())
+                        <li class="header-nav_item">
+                            <form action="">
+                                <input class="search_form" type="text">
+                            </form>
+                        </li>
+                        <li class="header-nav_item">
+                            <form class="form" action="/logout" method="post">
+                                @csrf
+                                <button class="header-nav_button">ログアウト</button>
+                            </form>
+                        </li>
+                        <li class="header-nav_item">
+                            <form action="">
+                                <button class="header-nav_button">マイページ</button>
+                            </form>
+                        </li>
+                        <li class="header-nav_item">
+                            <a class="header-nav_link" href="">出品</a>
+                        </li>
+                        @endif
+                    </ul>
+                </nav>
             </div>
         </div>
     </header>
@@ -33,3 +49,5 @@
     </main>
 </body>
 </html>
+
+

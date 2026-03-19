@@ -23,7 +23,6 @@ class CreateItemsTable extends Migration
             $table->string('brand_name', 255)->nullable();
             $table->string('content', 255)->nullable();
             $table->integer('price');
-            $table->string('url', 255)->nullable();
             $table->timestamps();
         });
     }

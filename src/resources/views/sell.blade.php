@@ -4,55 +4,19 @@
 <link rel="stylesheet" href="{{ asset('css/sell.css') }}" >
 @endsection
 
-@section('nav')
-<nav>
-    <ul class="header-nav">
-        <li class="header-nav_item">
-            <form action="">
-                <input class="search_form" type="text">
-            </form>
-        </li>
-        <nav>
-            @auth
-            <li class="header-nav_item">
-                <form class="form" action="/logout" method="post">
-                    @csrf
-                    <button class="header-nav_button">ログアウト</button>
-                </form>
-            </li>
-            @else
-            <li class="header-nav_item">
-                <a class="header-nav_button" href="/login">ログイン</a>
-            </li>
-            @endauth
-            <li class="header-nav_item">
-                <a class="header-nav_button" href="/mypage">マイページ</a>
-            </li>
-            <li class="header-nav_item">
-                <a class="header-nav_link" href="/sell">出品</a>
-            </li>
-        </nav>
-    </ul>
-</nav>
-@endsection
-
 @section('content')
 <div class="sell_form-content">
     <div class="sell_form-heading">
         <h1>商品の出品</h1>
     </div>
-    <form class="form" action="{{ route('sell.store') }}" method="post" enctype='multipart/form-data'>
-        @csrf
+    <form class="form" action="">
         <div class="form_container">
             <div class="form_group">
                 <div class="form_group-title">
                     <h3>商品画像</h3>
                 </div>
-                <div class="form_group-content_image">
-                    <div class="file-input">
-                        <img src="{{ asset('storage/items/') . $items }}" alt="" id="img">
-                        <input type="file" name="image" placeholder="画像を選択する" id="input">
-                    </div>
+                <div class="form_group-content">
+                    <input type="file" name="image" placeholder="画像を選択する">
                 </div>
                 <div class="form_error">
                     @error('image')
@@ -66,21 +30,18 @@
                 <h2>商品の詳細</h2>
             </div>
             <div class="form_group">
+                @foreach($items->categories as $category)
                 <div class="form_group-title">
                     <h3>カテゴリー</h3>
                 </div>
-                <div class="form_group-checkbox">
-                    @foreach($categories as $category)
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="categories[]" value="{{ $category['id'] }}">
-                        <span  class="checkbox-text">{{ $category['name'] }}</span>
-                    </label>
-                    @endforeach
-                    <div class="form_error">
-                        @error('categories')
-                        {{ $message }}
-                        @enderror
-                    </div>
+                <div class="form_group-content">
+                    <input type="checkbox" name="category_id" value="category['id']">{{ $category['name'] }}
+                </div>
+                @endforeach
+                <div class="form_error">
+                    @error('category_id')
+                    {{ $message }}
+                    @enderror
                 </div>
             </div>
             <div class="form_group">
@@ -89,8 +50,8 @@
                 </div>
                 <div class="form_group-content">
                     <select name="condition_id">
-                        <option value="">選択してください</option>
-                        @foreach($conditions as $condition)
+                        @foreach($items->conditions as $condition)
+                        <option value="" >選択してください</option>
                         <option value="{{ $condition['id'] }}">{{ $condition['name'] }}</option>
                         @endforeach
                     </select>
@@ -139,11 +100,6 @@
                 <div class="form_group-content">
                     <textarea name="content"></textarea>
                 </div>
-                <div class="form_error">
-                @error('content')
-                {{ $message }}
-                @enderror
-                </div>
             </div>
             <div class="form_group">
                 <div class="form_group-title">
@@ -156,7 +112,7 @@
                 @error('price')
                 {{ $message }}
                 @enderror
-                </div>
+            </div>
             </div>
         </div>
         <div class="form_button">
@@ -164,20 +120,4 @@
         </div>
     </form>
 </div>
-
-<script>
-    document.querySelector('#input').addEventListener('change', (event) => {
-        const file = event.target.files[0]
-
-        if (!file) return
-
-        const reader = new FileReader()
-
-        reader.onload = (event) => {
-            document.querySelector('#img').src = event.target.result
-        }
-
-        reader.readAsDataURL(file)
-    })
-</script>
 @endsection

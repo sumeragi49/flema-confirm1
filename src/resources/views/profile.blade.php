@@ -1,23 +1,47 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/address.css') }}">
+<link rel="stylesheet" href="{{ asset('css/profile.css') }}" >
 @endsection
 
 @section('content')
-<div class="address_form-content">
-    <div class="address_form-heading">
-        <h1>住所の変更</h1>
+<div class="profile_form-content">
+    <div class="profile_form-heading">
+        <h1>プロフィール設定</h1>
     </div>
     <form class="form" action="">
+        <div class="form_group">
+            <div class="form_group-content">
+                <input type="file" name="image" value="{{ old('image') }}" placeholder="画像を選択する">
+                <div class="form_error">
+                    @error('image')
+                    {{ $message }}
+                    @enderror
+                </div>
+            </div>
+        </div>
+        <div class="form_group">
+            <div class="form_group-title">
+                <span class="form_label">ユーザー名</span>
+            </div>
+            <div class="form_group-content">
+                <div class="form_input">
+                    <input type="text" name="name" value="{{ old('name') }}">
+                </div>
+                <div class="form_error">
+                    @error('name')
+                    {{ $message }}
+                    @enderror
+                </div>
+            </div>
+        </div>
         <div class="form_group">
             <div class="form_group-title">
                 <span class="form_label">郵便番号</span>
             </div>
             <div class="form_group-content">
                 <div class="form_input">
-                    <input type="text" name="post" value="{{ $profiles['post'] }}" size="8" maxlength="8" pattern="¥d{3}-¥d{4}">
-                    <input type="hidden" name="id" value="{{ $profile['id'] }}">
+                    <input type="text" name="post" value="{{ old('post') }}" size="8" maxlength="8" pattern="¥d{3}-¥d{4}">
                 </div>
                 <div class="form_error">
                     @error('post')
@@ -32,8 +56,7 @@
             </div>
             <div class="form_group-content">
                 <div class="form_input">
-                    <input type="text" name="address" value="{{ $profiles['address'] }}">
-                    <input type="hidden" name="id" value="{{ $profile['id'] }}">
+                    <input type="text" name="address" value="{{ old('address') }}">
                 </div>
                 <div class="form_error">
                     @error('address')
@@ -48,8 +71,7 @@
             </div>
             <div class="form_group-content">
                 <div class="form_input">
-                    <input type="text" name="building" value="{{ $profiles['building'] }}">
-                    <input type="hidden" name="id" value="{{ $profile['id'] }}">
+                    <input type="text" name="building" value="{{ old('building') }}">
                 </div>
                 <div class="form_error">
                     @error('building')
@@ -63,3 +85,4 @@
         </div>
     </form>
 </div>
+@endsection
