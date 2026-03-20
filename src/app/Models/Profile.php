@@ -18,7 +18,7 @@ class Profile extends Model
         'building'
     ];
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

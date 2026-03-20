@@ -50,47 +50,49 @@
 @section('content')
 <div class="item_content">
     <div class="split_item-image_container">
-        <img src="{{ asset('storage/profiles/' . $items['image']) }}" alt="{{ $items['name'] }}">
+        <img src="{{ asset('storage/items/' . $items['image']) }}" alt="{{ $items['name'] }}">
     </div>
     <div class="split_item-text_container">
-        <form action="">
-            <div class="container_item">
-                <h1>{{ $items['name'] }}</h1>
+        <div class="container_item">
+            <h1>{{ $items['name'] }}</h1>
+        </div>
+        <div class="container_item">
+            <p>{{ $items['brand_name'] }}</p>
+        </div>
+        <div class="container_item">
+            <span>¥</span>
+            <span>{{ $items['price'] }}</span>
+            <span>(税込)</span>
+        </div>
+        <div class="container_item">
+            <div class="form_button">
+                <a href="/purchase/{{ $items['id'] }}" class="form_button-submit">購入手続きへ</a>
             </div>
-            <div class="container_item">
-                <p>{{ $items['brand_name'] }}</p>
-            </div>
-            <div class="container_item">
-                <span>¥</span>
-                <span>{{ $items['price'] }}</span>
-                <span>(税込)</span>
-            </div>
-            <div class="container_item">
-                <div class="form_button">
-                    <button class="form_button-submit">購入手続きへ</button>
-                </div>
-            </div>
-            <div class="container_item">
-                <h2>商品説明</h2>
-            </div>
-            <div class="container_item">
-                <p>{{ $items['content'] }}</p>
-            </div>
-            <div class="container_item">
-                <h2>商品の情報</h2>
-            </div>
-            <div class="container_item-category">
-                <h3>カテゴリー</h3>
-                @foreach($items->categories as $category)
-                <input type="text" name="category_id" value="{{ $category['name'] }}">
-                @endforeach
-            </div>
-            <div class="container_item-condition">
-                <h3>商品の状態</h3>
-                <p>{{ $items->condition['name'] }}</p>
-            </div>
-        </form>
-        <form action="">
+        </div>
+        <div class="container_item">
+            <h2>商品説明</h2>
+        </div>
+        <div class="container_item">
+            <p>{{ $items['content'] }}</p>
+        </div>
+        <div class="container_item">
+            <h2>商品の情報</h2>
+        </div>
+        <div class="container_item-category">
+            <h3>カテゴリー</h3>
+            @foreach($items->categories as $category)
+            <input type="text" name="category_id" value="{{ $category['name'] }}">
+            @endforeach
+        </div>
+        <div class="container_item-condition">
+            <h3>商品の状態</h3>
+            <p>{{ $items->condition['name'] }}</p>
+        </div>
+        <form action="{{ route('comment.store') }}" method="post">
+            @csrf
+            <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+            <input type="hidden" name="profile_id" value="{{ $profiles['id'] }}">
+            <input type="hidden" name="item_id" value="{{ $items['id'] }}">
             <div class="container_item">
                 <h2>コメント({{ $items->comments->count() }})</h2>
             </div>
@@ -105,11 +107,11 @@
             @endforeach
             <div class="container_item">
                 <h3>商品へのコメント</h3>
-                <textarea name="comment_content" value="{{ old('content') }}" ></textarea>
+                <textarea name="content" value="{{ old('content') }}" ></textarea>
             </div>
             <div class="container_item">
                 <div class="form_button">
-                    <button class="form_button-submit">コメントを送信する</button>
+                    <button class="form_button-submit" type="submit">コメントを送信する</button>
                 </div>
             </div>
         </form>

@@ -38,7 +38,9 @@ class ItemController extends Controller
 
     public function show($itemId)
     {
-        $userId = Auth::id();
+        $user = Auth::user();
+
+        $profiles = $user->profile;
 
         $items = Item::with(['condition', 'profile', 'likes', 'comments.profile'])->findOrFail($itemId);
         echo $items->comments_count;
@@ -49,6 +51,6 @@ class ItemController extends Controller
 
         }
 
-        return view('detail', compact('isFavorite', 'items'));
+        return view('detail', compact('isFavorite', 'items', 'profiles'));
     }
 }

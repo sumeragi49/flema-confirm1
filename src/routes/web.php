@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +30,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile/store', [ProfileController::class, 'store'])->name('profile.store');
 
     Route::post('comment/store', [CommentController::class, 'store'])->name('comment.store');
-});
+
+    Route::get('/purchase/{itemId}', [OrderController::class, 'index']);
+
+    Route::post('/purchase/{itemId}/store', [OrderController::class, 'store']);
+
+    Route::get('/mypage')
 
 Route::middleware('guest')->group(function () {
     Route::get('/', [ItemController::class, 'index'])->name('items.index');
