@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 use App\Models\Order;
 use App\Models\Like;
+use App\Models\Condition;
+use App\Models\Category;
 
 class ItemController extends Controller
 {
@@ -50,5 +52,47 @@ class ItemController extends Controller
         }
 
         return view('detail', compact('isFavorite', 'items'));
+    }
+
+    public function sell(Request $request)
+    {
+        $user = Auth::user();
+
+        $profiles = $user->profile;
+
+        $items = Item::with('condition', 'categories')->get();
+
+        $conditions = Condition::all();
+
+        $categories = Category::all();
+
+        return view('sell', compact('user', 'profiles', 'items', 'conditions', 'categories'));
+    }
+
+    public function sellStore(Request $request)
+    {
+        $user = Auth::user();
+
+        $profiles = $user->profile;
+
+        $items = $request->only(['user_id','profile_id', 'condition_id', 'image', 'name', 'brand_name', 'content', 'price']);
+
+        if(request('image')) {
+            $file = request()->file('image')->getClientOriginalName();
+
+            $name = date('Ymd_His').'_'. $file;
+
+            request()->file('image')->move('storage/items/', $name);
+
+            $items['image'] = $name;
+        }
+
+        Item::create($items);
+
+        $items = Item::with('categories')->latest()->first();
+
+        $items->categories()->sync($request->categories);
+
+        return redirect('/dashboard');
     }
 }

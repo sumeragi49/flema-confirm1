@@ -13,12 +13,20 @@
 
 .form {
     margin: 0 auto;
-    width: 50%;
+    width: 80%;
     text-align: center;
 }
 
 .form_container {
     margin: 10px;
+}
+
+.form_container-title {
+    text-align: left;
+}
+
+.form_container-title h2 {
+    color: grey;
     border-bottom: 1px solid #000;
 }
 
@@ -31,8 +39,8 @@
 }
 
 .form_group-content input,
+.form_group-content select,
 .form_group-content textarea{
-    padding: 10px;
     width: 100%;
     height: 40px;
     border: 1px solid #000;
@@ -46,6 +54,44 @@
 
 .form_group-content textarea {
     height: 120px;
+}
+
+.form_group-content-img img{
+    width:70%;
+    height:200px;
+    border-style: dotted;
+    margin: 10px 0;
+}
+
+.form_group-content_item {
+    display: flex;
+}
+
+.form_group-content_category {
+    cursor: pointer;
+    align-items: center;
+    color:#ff0000;
+    margin:0 20px;
+    border: 1px solid #ff0000;
+    border-radius: 50px;
+    transition: all 0.3s;
+}
+
+.form_group-content_category input {
+    position: absolute;
+    margin :5px 0;
+    height: 25px;
+    opacity: 0;
+}
+
+.form_group-content_category input:checked + .checkbox-text {
+    border-radius: 50px;
+    background: #ff0000;
+    color: #ffffff;
+}
+
+.checkbox-text {
+    padding: 0 10px;
 }
 
 .form_error {

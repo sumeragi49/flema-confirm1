@@ -69,4 +69,22 @@ class ProfileController extends Controller
 
         return view('profiles', compact('user', 'items', 'profiles', 'page'));
     }
+
+    public function address(Request $request, $itemId)
+    {
+        $user = Auth::user();
+
+        $profiles = $user->profile;
+
+        return view('address', compact('user', 'profiles', 'itemId'));
+    }
+
+    public function addressUpdate(Request $request, $itemId)
+    {
+        $profiles = $request->only(['post', 'address', 'building']);
+
+        Profile::find($request->id)->update($profiles);
+
+        return redirect()->route('purchase.index', ['itemId' => $itemId]);
+    }
 }

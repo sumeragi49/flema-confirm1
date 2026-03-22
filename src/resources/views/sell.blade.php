@@ -9,14 +9,18 @@
     <div class="sell_form-heading">
         <h1>商品の出品</h1>
     </div>
-    <form class="form" action="">
+    <form class="form" action="{{ route('item.store') }}" method="post" enctype="multipart/form-data">
+        @csrf
+        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+        <input type="hidden" name="profile_id" value="{{ auth()->user()->profile->id }}">
         <div class="form_container">
             <div class="form_group">
                 <div class="form_group-title">
                     <h3>商品画像</h3>
                 </div>
-                <div class="form_group-content">
-                    <input type="file" name="image" placeholder="画像を選択する">
+                <div class="form_group-content-img">
+                    <img id="img">
+                    <input type="file" name="image" id="input" placeholder="画像を選択する">
                 </div>
                 <div class="form_error">
                     @error('image')
@@ -30,14 +34,17 @@
                 <h2>商品の詳細</h2>
             </div>
             <div class="form_group">
-                @foreach($items->categories as $category)
                 <div class="form_group-title">
                     <h3>カテゴリー</h3>
                 </div>
                 <div class="form_group-content">
-                    <input type="checkbox" name="category_id" value="category['id']">{{ $category['name'] }}
+                    @foreach($categories as $category)
+                    <label class="form_group-content_category">
+                        <input type="checkbox" name="categories[]" value="{{ $category['id'] }}">
+                        <span class=checkbox-text>{{ $category['name'] }}</span>
+                    </label>
+                    @endforeach
                 </div>
-                @endforeach
                 <div class="form_error">
                     @error('category_id')
                     {{ $message }}
@@ -50,8 +57,8 @@
                 </div>
                 <div class="form_group-content">
                     <select name="condition_id">
-                        @foreach($items->conditions as $condition)
                         <option value="" >選択してください</option>
+                        @foreach($conditions as $condition)
                         <option value="{{ $condition['id'] }}">{{ $condition['name'] }}</option>
                         @endforeach
                     </select>
@@ -120,4 +127,21 @@
         </div>
     </form>
 </div>
+
+<script>
+    document.querySelector('#input').addEventListener('change', (event) => {
+
+        const file = event.target.files[0]
+
+        if (!file) return
+
+        const reader = new FileReader()
+
+        reader.onload = (event) => {
+            document.querySelector('#img').src = event.target.result
+        }
+
+        reader.readAsDataURL(file)
+    })
+</script>
 @endsection

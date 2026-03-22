@@ -33,11 +33,19 @@ Route::middleware('auth')->group(function () {
 
     Route::post('comment/store', [CommentController::class, 'store'])->name('comment.store');
 
-    Route::get('/purchase/{itemId}', [OrderController::class, 'index']);
+    Route::get('/purchase/{itemId}', [OrderController::class, 'index'])->name('purchase.index');
+
+    Route::get('/purchase/address/{itemId}', [ProfileController::class, 'address']);
+
+    Route::patch('/purchase/address/{itemId}/update', [ProfileController::class, 'addressUpdate'])->name('address.update');
 
     Route::post('/purchase/{itemId}/store', [OrderController::class, 'store']);
 
     Route::get('/mypage', [ProfileController::class, 'mypage'])->name('profile.index');
+
+    Route::get('/sell', [ItemController::class, 'sell']);
+
+    Route::post('/sell/store', [ItemController::class, 'sellStore'])->name('item.store');
 });
 
 Route::middleware('guest')->group(function () {

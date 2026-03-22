@@ -91,6 +91,9 @@
         <form action="{{ route('comment.store') }}" method="post">
             @csrf
             <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+            @auth
+            <input type="hidden" name="profile_id" value="{{ auth()->user()->profile->id }}">
+            @endauth
             <input type="hidden" name="item_id" value="{{ $items['id'] }}">
             <div class="container_item">
                 <h2>コメント({{ $items->comments->count() }})</h2>

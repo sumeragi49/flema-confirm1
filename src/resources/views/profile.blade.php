@@ -17,7 +17,7 @@
         <input type="hidden" name="user_id" value="{{ auth()->id() }}">
         <div class="form_group">
             <div class="form_group-content">
-                <img id="img" src="{{ asset('storage/items/' . $profiles['image'] ) }}" alt="{{ $profiles['name']  }}">
+                <img id="img" src="{{ asset('storage/profiles/' . $profiles['image'] ) }}" alt="{{ $profiles['name']  }}">
                 <input type="file" name="image" id="input" value="{{ old('image') }}" placeholder="画像を選択する">
                 <input type="hidden" name="id" value="{{ $profiles['id'] }}">
                 <div class="form_error">
