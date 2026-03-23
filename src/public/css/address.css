@@ -1,3 +1,68 @@
+nav {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    justify-items: space-between;
+    float: right;
+}
+
+.header-nav_link {
+    color: #000;
+    text-decoration: none;
+    background: #fff;
+    border-radius: 3px;
+}
+
+.header-nav_link a {
+    color: #000;
+    text-decoration: none;
+    border: none;
+    background: #fff;
+    border-radius: 3px;
+}
+
+.header-nav_button {
+    border: none;
+    margin-left: 50px;
+    margin-right: 50px;
+    text-decoration: none;
+    background: transparent;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.header-nav_mypage a {
+    border: none;
+    margin-left: 50px;
+    margin-right: 50px;
+    text-decoration: none;
+    background: transparent;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.header-nav_sell a {
+    border: none;
+    padding: 5px 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    text-decoration: none;
+    background: #fff;
+    color: #000;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
 .address_form-content {
     margin: 0 auto;
     padding: 20px 15px;
@@ -36,7 +101,7 @@
 .form_error {
     height: 20px;
     color: #ff0000;
-    text-align: center;
+    text-align: left;
 }
 
 .form_button {

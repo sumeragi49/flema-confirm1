@@ -64,6 +64,29 @@
             <span>{{ $items['price'] }}</span>
             <span>(税込)</span>
         </div>
+        <div class="container_item-button">
+            <div class="container_item-like">
+                @if($items->likedUsers->contains(Auth::id()))
+                <form action="{{ route('unlike', $items['id']) }}" method="post">
+                    @csrf
+                    @method('delete')
+                    <button type="submit">🖤</button>
+                </form>
+                @else
+                <form action="{{ route('like', $items['id']) }}" method="post">
+                    @csrf
+                    <button type="submit">❤️</button>
+                </form>
+                @endif
+                <span>{{ $items->likes->count() }}</span>
+            </div>
+            <div class="container_item-comment">
+                <span>💬</span>
+                <div class="container_item-comment_count">
+                    <span>{{ $items->comments->count() }}</span>
+                </div>
+            </div>
+        </div>
         <div class="container_item">
             <div class="form_button">
                 <a href="/purchase/{{ $items['id'] }}" class="form_button-submit">購入手続きへ</a>
@@ -110,6 +133,11 @@
             <div class="container_item">
                 <h3>商品へのコメント</h3>
                 <textarea name="content" value="{{ old('content') }}" ></textarea>
+                <div class="form_error">
+                    @error('content')
+                    {{ $message }}
+                    @enderror
+                </div>
             </div>
             <div class="container_item">
                 <div class="form_button">

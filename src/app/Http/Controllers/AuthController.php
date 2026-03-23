@@ -14,7 +14,7 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function registerStore(Request $request)
+    public function registerStore(RegisterRequest $request)
     {
         $users = $request->only(['name', 'email', 'password']);
 

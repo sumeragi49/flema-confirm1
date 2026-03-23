@@ -6,6 +6,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\LikeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile/store', [ProfileController::class, 'store'])->name('profile.store');
 
     Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+    Route::post('/item/{itemId}/like', [LikeController::class, 'like'])->name('like');
+
+    Route::delete('/item/{itemId}/unlike', [LikeController::class, 'unlike'])->name('unlike');
 
     Route::post('comment/store', [CommentController::class, 'store'])->name('comment.store');
 

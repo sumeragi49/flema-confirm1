@@ -4,6 +4,49 @@
 <link rel="stylesheet" href="{{ asset('css/sell.css') }}" >
 @endsection
 
+@section('nav')
+<ul class="header-nav">
+    <li class="header-nav_item">
+        @auth
+        <form class="search-form" action="{{ route('items.search') }}" method="get">
+            @csrf
+            <input type="hidden" name="tab" value="">
+            <input type="text" name="keyword" value="{{ request('keyword') }}" placeholder="何をお探しですか？" onchange="this.form.submit()">
+        </form>
+        @else
+        <form class="search-form" action="{{ route('items.search') }}" method="get">
+            @csrf
+            <input type="hidden" name="tab" value="">
+            <input type="text" name="keyword" value="{{ request('keyword') }}" placeholder="何をお探しですか？" onchange="this.form.submit()">
+        </form>
+        @endauth
+    </li>
+    <nav>
+        @auth
+        <li class="header-nav_item">
+            <form action="/logout" method="post">
+                @csrf
+                <button class="header-nav_button">ログアウト</button>
+            </form>
+        </li>
+        @else
+        <li class="header-nav_item">
+            <form action="/login" method="get">
+                @csrf
+                <button class="header-nav_button">ログイン</button>
+            </form>
+        </li>
+        @endauth
+        <li class="header-nav_mypage">
+            <a href="/mypage">マイページ</a>
+        </li>
+        <li class="header-nav_sell">
+            <a href="/sell">出品</a>
+        </li>
+    </nav>
+</ul>
+@endsection
+
 @section('content')
 <div class="sell_form-content">
     <div class="sell_form-heading">
@@ -45,12 +88,12 @@
                     </label>
                     @endforeach
                 </div>
-                <div class="form_error">
-                    @error('category_id')
+            </div>
+            <div class="form_error">
+                    @error('categories')
                     {{ $message }}
                     @enderror
                 </div>
-            </div>
             <div class="form_group">
                 <div class="form_group-title">
                     <h3>商品の状態</h3>
@@ -106,6 +149,11 @@
                 </div>
                 <div class="form_group-content">
                     <textarea name="content"></textarea>
+                </div>
+                <div class="form_error">
+                    @error('content')
+                    {{ $message }}
+                    @enderror
                 </div>
             </div>
             <div class="form_group">

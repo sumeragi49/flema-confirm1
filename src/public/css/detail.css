@@ -67,7 +67,7 @@ nav {
     width: 100%;
     display: flex;
     gap: 20px;
-    padding: 20px 15px;
+    padding: 20px 100px;
 }
 
 .split_item-image_container img{
@@ -81,13 +81,13 @@ nav {
 }
 
 .form_button {
-    width: 70%;
+    width: 100%;
     margin-top: 20px;
 }
 
 .form_button a {
     padding: 10px;
-    width: 300;
+    width: 300px;
     height: 40px;
     border: none;
     text-decoration: none;
@@ -99,13 +99,34 @@ nav {
 
 .form_button-submit {
     padding: 10px;
-    width: 100%;
+    width: 70%;
     height: 40px;
     border: none;
     border-radius: 3px;
     color: #fff;
     background: #ff0000;
     cursor: pointer;
+}
+
+.container_item {
+    width: 100%;
+}
+
+.container_item-button {
+    display:flex;
+}
+
+.container_item-like span{
+    margin-left: 12px;
+}
+
+.container_item-like button {
+    border:none;
+    background: #ffffff;
+}
+
+.container_item-comment_count span {
+    margin-left: 7px;
 }
 
 .container_item span {
@@ -155,4 +176,10 @@ nav {
     width: 50px;
     height: 50px;
     border-radius: 50%;
+}
+
+.form_error {
+    height: 20px;
+    color: #ff0000;
+    text-align: left;
 }

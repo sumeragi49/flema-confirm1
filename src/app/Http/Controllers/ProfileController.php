@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\AddressRequest;
+use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Profile;
 use App\Models\Order;
@@ -38,7 +40,7 @@ class ProfileController extends Controller
         return redirect('/dashboard');
     }
 
-    public function update(Request $request)
+    public function update(ProfileRequest $request)
     {
         $profiles = $request->only(['image', 'name', 'post', 'address', 'building']);
 
@@ -79,7 +81,7 @@ class ProfileController extends Controller
         return view('address', compact('user', 'profiles', 'itemId'));
     }
 
-    public function addressUpdate(Request $request, $itemId)
+    public function addressUpdate(AddressRequest $request, $itemId)
     {
         $profiles = $request->only(['post', 'address', 'building']);
 

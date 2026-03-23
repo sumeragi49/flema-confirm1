@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PurchaseRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 use App\Models\Order;
@@ -21,7 +22,7 @@ class OrderController extends Controller
         return view('purchase', compact('user','profiles', 'items'));
     }
 
-    public function store(Request $request, $itemId)
+    public function store(PurchaseRequest $request, $itemId)
     {
         $user = Auth::user();
 

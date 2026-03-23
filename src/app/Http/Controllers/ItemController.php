@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ExhibitionRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 use App\Models\Order;
@@ -69,7 +70,7 @@ class ItemController extends Controller
         return view('sell', compact('user', 'profiles', 'items', 'conditions', 'categories'));
     }
 
-    public function sellStore(Request $request)
+    public function sellStore(ExhibitionRequest $request)
     {
         $user = Auth::user();
 

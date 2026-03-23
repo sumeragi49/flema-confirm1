@@ -21,7 +21,7 @@ class CreateItemsTable extends Migration
             $table->string('name', 255);
             $table->string('image', 255);
             $table->string('brand_name', 255)->nullable();
-            $table->string('content', 255)->nullable();
+            $table->string('content', 255);
             $table->integer('price');
             $table->string('stripe_url')->nullable();
             $table->timestamps();
