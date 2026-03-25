@@ -70,12 +70,12 @@
                 <form action="{{ route('unlike', $items['id']) }}" method="post">
                     @csrf
                     @method('delete')
-                    <button type="submit">🖤</button>
+                    <button type="submit">❤️</button>
                 </form>
                 @else
                 <form action="{{ route('like', $items['id']) }}" method="post">
                     @csrf
-                    <button type="submit">❤️</button>
+                    <button type="submit">🖤</button>
                 </form>
                 @endif
                 <span>{{ $items->likes->count() }}</span>

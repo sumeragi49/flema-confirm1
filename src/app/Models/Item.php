@@ -65,4 +65,20 @@ class Item extends Model
     {
         return $this->hasMany(Like::class);
     }
+
+    public function scopeFiltered($query, $request) {
+        $query->when($request->keyword, function ($q, $keyword) {
+            $q->where('name', 'like', '%' . $keyword . '%');
+        });
+
+        $query->when($request->tab === 'myList', function ($q) {
+            $q->whereHas('likes', function ($q) {
+                $q->where('user_id', auth()->id());
+            });
+        }, function ($q) {
+            $q->where('user_id', '!=', auth()->id());
+        });
+
+        return $query;
+    }
 }

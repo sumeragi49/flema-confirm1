@@ -28,9 +28,11 @@ class ProfileController extends Controller
         $profiles = $request->only(['user_id', 'image', 'name', 'post', 'address', 'building']);
 
         if(request('image')) {
-            $name = request()->file('image')->getClientOriginalName();
+            $file = request()->file('image')->getClientOriginalName();
 
-            request()->file('image')->move('storage/items/', $name);
+            $name = date('Ymd_His').'_'. $file;
+
+            request()->file('image')->move('storage/profiles/', $name);
 
             $profiles['image'] = $name;
         }

@@ -26,17 +26,35 @@ class ItemController extends Controller
         if ($tab === 'myList') {
             $likeItemIds = Like::where('user_id', Auth::id())->pluck('item_id')->toArray();
 
-            $items = Item::whereIn('id', $likeItemIds)->get();
+            $items = Item::whereIn('id', $likeItemIds)->paginate(15);
         }else {
-            $items = Item::where('user_id', '!=', $userId)->get();
+            $items = Item::where('user_id', '!=', $userId)->paginate(15);
         }
 
         return view('index', compact('userId', 'items','tab'));
     }
 
-    public function search()
+    public function search(Request $request)
     {
+        $userId = Auth::id();
 
+        $tab = $request->query('tab', 'recommend');
+
+        $items =Item::with('order')->get();
+
+        $items = [];
+
+        if ($tab === 'myList') {
+            $likeItemIds = Like::where('user_id', Auth::id())->pluck('item_id')->toArray();
+
+            $items = Item::whereIn('id', $likeItemIds)->paginate(15);
+        }else {
+            $items = Item::where('user_id', '!=', $userId)->paginate(15);
+        }
+
+        $items = Item::with('likes')->filtered($request)->paginate(15);
+
+        return view('index', compact('userId', 'items', 'tab'));
     }
 
     public function show($itemId)

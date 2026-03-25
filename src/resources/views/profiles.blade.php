@@ -49,7 +49,7 @@
 @section('content')
 <div class="item_content">
     <div class="item_content-profile">
-        <img src="{{ asset('storage/items/' . $profiles['image']) }}" alt="{{ $profiles['name'] }}">
+        <img src="{{ asset('storage/profiles/' . $profiles['image']) }}" alt="{{ $profiles['name'] }}">
         <h2>{{ $profiles['name'] }}</h2>
         <a href="/mypage/profile">プロフィールを編集</a>
     </div>

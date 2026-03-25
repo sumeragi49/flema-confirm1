@@ -10,13 +10,13 @@
         @auth
         <form class="search-form" action="{{ route('items.search') }}" method="get">
             @csrf
-            <input type="hidden" name="tab" value="{{ $tab }}">
+            <input type="hidden" name="tab" value="{{ request('tab', 'recommend') }}">
             <input type="text" name="keyword" value="{{ request('keyword') }}" placeholder="何をお探しですか？" onchange="this.form.submit()">
         </form>
         @else
         <form class="search-form" action="{{ route('items.search') }}" method="get">
             @csrf
-            <input type="hidden" name="tab" value="{{ $tab }}">
+            <input type="hidden" name="tab" value="{{ request('tab', 'recommend') }}">
             <input type="text" name="keyword" value="{{ request('keyword') }}" placeholder="何をお探しですか？" onchange="this.form.submit()">
         </form>
         @endauth
@@ -52,11 +52,11 @@
 <div class="item_content">
     <div class="item_content-search">
         @auth
-        <a href="{{ route('item.index', ['tab' => 'recommend']) }}" class="{{ $tab === 'recommend' ? 'active' : '' }}">おすすめ</a>
-        <a href="{{ route('item.index', ['tab' => 'myList']) }}" class="{{ $tab === 'myList' ? 'active' : '' }}">マイリスト</a>
+        <a href="{{ route('item.index', ['tab' => 'recommend', 'keyword' => request('keyword')]) }}" class="{{ $tab === 'recommend' ? 'active' : '' }}">おすすめ</a>
+        <a href="{{ route('item.index', ['tab' => 'myList', 'keyword' => request('keyword')]) }}" class="{{ $tab === 'myList' ? 'active' : '' }}">マイリスト</a>
         @else
-        <a href="{{ route('items.index', ['tab' => 'recommend']) }}" class="{{ $tab === 'recommend' ? 'active' : '' }}">おすすめ</a>
-        <a href="{{ route('items.index', ['tab' => 'myList']) }}" class="{{ $tab === 'myList' ? 'active' : '' }}">マイリスト</a>
+        <a href="{{ route('items.index', ['tab' => 'recommend', 'keyword' => request('keyword')]) }}" class="{{ $tab === 'recommend' ? 'active' : '' }}">おすすめ</a>
+        <a href="{{ route('items.index', ['tab' => 'myList', 'keyword' => request('keyword')]) }}" class="{{ $tab === 'myList' ? 'active' : '' }}">マイリスト</a>
         @endauth
     </div>
     <div class="item_list">
@@ -81,4 +81,6 @@
         </div>
     </div>
 </div>
+
+{{ $items->appends(request()->query())->links() }}
 @endsection

@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Http\Requests\RegisterRequest;
+use Laravel\Fortify\Contracts\CreateNewUsers;
+use Laravel\Fortify\Contracts\RegisterResponse;
 
 class AuthController extends Controller
 {
@@ -14,16 +17,22 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function registerStore(RegisterRequest $request)
+    public function registerStore(RegisterRequest $request): RegisterResponse
     {
-        $users = $request->only(['name', 'email', 'password']);
+        $user = $request->only(['name', 'email', 'password']);
 
         $password = $request->input('password');
-        $users['password'] = Hash::make($password);
+        $user['password'] = Hash::make($password);
 
-        User::create($users);
+        User::create($user);
 
-        return redirect('/mypage/profile');
+        $user = User::latest()->first();
+
+        if ($user) {
+            Auth::login($user);
+        }
+
+        return app(RegisterResponse::class);
     }
 
     public function login()
