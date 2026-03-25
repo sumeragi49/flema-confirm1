@@ -31,6 +31,7 @@ Laravel環境構築
 ・laravel/laravel v8.6.12
 ・laravel/fortify v1.19.1
 ・laravel-lang/lang 7.0.9
+・laravel/cashier v13.17.0
 
 連携外部サイト
 ・stripe
