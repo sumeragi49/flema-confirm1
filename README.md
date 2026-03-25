@@ -13,7 +13,7 @@ Laravel環境構築
 ・php artisan db:seed
 
 開発環境
-・一覧ページ　http://localhost
+・一覧ページ　http://localhost(未認証), http://localhost/dashboard(認証)
 ・一覧ページ（マイリスト） http://localhost/tab=mylist
 ・登録ページ　http://localhost/register
 ・ログインページ　http://localhost/login
@@ -32,6 +32,14 @@ Laravel環境構築
 ・laravel/fortify v1.19.1
 ・laravel-lang/lang 7.0.9
 
-<img width="1995" height="1469" alt="スクリーンショット 2026-01-31 080108" src="https://github.com/user-attachments/assets/a23c11d3-23bd-4bff-b7f9-fe3177cfe749" />
+連携外部サイト
+・stripe
+
+test ユーザー
+・id:1 name:test太郎 email:test1@example.com password:coachtech1001
+・id:2 name:test次郎 email:test2@example.com password:coachtech1002
+
+<img width="1349" height="1444" alt="スクリーンショット 2026-03-19 054201" src="https://github.com/user-attachments/assets/995b1417-8f6e-4b89-a220-d9759c64685f" />
+
 
 
