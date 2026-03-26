@@ -47,4 +47,4 @@
 ・id:2 name:test次郎 email:test2@example.com password:coachtech1002<br>
 
 ### ER図<br>
-![ER図](public/images/ER.png)
+<img width="1349" height="1444" alt="Image" src="https://github.com/user-attachments/assets/39b8effc-aa77-4f2e-af2b-4c6a439d25a1" />
