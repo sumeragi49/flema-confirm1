@@ -1,10 +1,10 @@
-<span style="color: blue; font-size: 48px;">環境構築</span>
+#環境構築
 
-<span style="color: yellow; font-size: 24px;">Dockerビルド</span><br>
+##Dockerビルド<br>
 ・git clone git@github.com:sumeragi49/flema.git<br>
 ・docker-compose up -d --build<br>
 
-<span style="color: yellow; font-size: 24px;">Laravel環境構築</span><br>
+##Laravel環境構築<br>
 ・docker-compose exec php bash<br>
 ・composer install<br>
 ・cp .env.example.env<br>
@@ -12,7 +12,7 @@
 ・php artisan migrate<br>
 ・php artisan db:seed<br>
 
-<span style="color: yellow; font-size: 24px;">開発環境</span><br>
+##開発環境<br>
 ・一覧ページ　http://localhost(未認証), http://localhost/dashboard(認証)<br>
 ・一覧ページ（マイリスト） http://localhost/tab=mylist<br>
 ・登録ページ　http://localhost/register<br>
@@ -26,19 +26,19 @@
 ・プロフィール画面*購入した商品一覧　http://localhost/mypage/page=buy<br>
 ・プロフィール画面\_出品した商品一覧　http://localhost/mypage/page=sell<br>
 
-<span style="color: yellow; font-size: 24px;">使用技術（実行環境）</span><br>
+##使用技術（実行環境）<br>
 ・Composer version 2.9.3<br>
 ・laravel/laravel v8.6.12<br>
 ・laravel/fortify v1.19.1<br>
 ・laravel-lang/lang 7.0.9<br>
 ・laravel/cashier v13.17.0<br>
 
-<span style="color: yellow; font-size: 24px;">連携外部サイト</span><br>
+##連携外部サイト</span><br>
 ・stripe<br>
 
-<span style="color: yellow; font-size: 24px;">test ユーザー</span><br>
+###test ユーザー</span><br>
 ・id:1 name:test太郎 email:test1@example.com password:coachtech1001<br>
 ・id:2 name:test次郎 email:test2@example.com password:coachtech1002<br>
 
-<span style="color: yellow; font-size: 24px;">ER図</span><br>
+###ER図</span><br>
 <img width="1349" height="1444" alt="スクリーンショット 2026-03-19 054201" src="https://github.com/user-attachments/assets/995b1417-8f6e-4b89-a220-d9759c64685f" />
