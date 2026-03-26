@@ -2,7 +2,7 @@
 
 ## Dockerビルド<br>
 
-・git clone git@github.com:sumeragi49/flema.git<br>
+・git clone https://github.com/sumeragi49/flema-confirm1.git<br>
 ・docker-compose up -d --build<br>
 
 ## Laravel環境構築<br>
@@ -27,7 +27,7 @@
 ・プロフィールページ　http://localhost/mypage<br>
 ・プロフィール編集ページ　http://localhost/profile<br>
 ・プロフィール画面*購入した商品一覧　http://localhost/mypage/page=buy<br>
-・プロフィール画面\_出品した商品一覧　http://localhost/mypage/page=sell<br>
+・プロフィール画面*出品した商品一覧　http://localhost/mypage/page=sell<br>
 
 ## 使用技術（実行環境）<br>
 
@@ -47,4 +47,4 @@
 ・id:2 name:test次郎 email:test2@example.com password:coachtech1002<br>
 
 ### ER図<br>
-<img width="1349" height="1444" alt="スクリーンショット 2026-03-19 054201" src="https://github.com/user-attachments/assets/995b1417-8f6e-4b89-a220-d9759c64685f" />
+![ER図](public/images/ER.png)
