@@ -114,10 +114,12 @@ nav {
 
 .container_item-button {
     display:flex;
+    margin-top:10px;
+    gap:20px;
 }
 
 .container_item-like span{
-    margin-left: 12px;
+    margin-left: 24px;
 }
 
 .container_item-like button {
@@ -125,8 +127,12 @@ nav {
     background: #ffffff;
 }
 
+.container_item-comment_count {
+    margin-top: 3px;
+}
+
 .container_item-comment_count span {
-    margin-left: 7px;
+    margin-left: 12px;
 }
 
 .container_item span {

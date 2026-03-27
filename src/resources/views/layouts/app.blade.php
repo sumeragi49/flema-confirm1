@@ -14,7 +14,7 @@
         <div class="header_inner">
             <div class="header-utilities">
                 <a class="header_logo" href="/">
-                    coachtech
+                    <img src="{{ asset('storage/images/COACHTECHヘッダーロゴ.png') }}" alt="COACHTECH">
                 </a>
                 @yield('nav')
             </div>

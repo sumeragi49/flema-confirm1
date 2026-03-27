@@ -70,18 +70,24 @@
                 <form action="{{ route('unlike', $items['id']) }}" method="post">
                     @csrf
                     @method('delete')
-                    <button type="submit">❤️</button>
+                    <button type="submit">
+                        <img src="{{ asset('storage/images/ハートロゴ_ピンク.png') }}" alt="ハートロゴ_ピンク">
+                    </button>
                 </form>
                 @else
                 <form action="{{ route('like', $items['id']) }}" method="post">
                     @csrf
-                    <button type="submit">🖤</button>
+                    <button type="submit">
+                        <img src="{{ asset('storage/images/ハートロゴ_デフォルト.png') }}" alt="ハートロゴ_デフォルト">
+                    </button>
                 </form>
                 @endif
                 <span>{{ $items->likes->count() }}</span>
             </div>
             <div class="container_item-comment">
-                <span>💬</span>
+                <span>
+                    <img src="{{ asset('storage/images/ふきだしロゴ.png') }}" alt="ふきだしロゴ">
+                </span>
                 <div class="container_item-comment_count">
                     <span>{{ $items->comments->count() }}</span>
                 </div>
